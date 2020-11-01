@@ -19,6 +19,7 @@ dp = np.zeros(N+1)
 dp[1] = 1
 dpsum = np.zeros(N+1)
 dpsum[1] = 1
+
 for i in range(2, N+1):
     for l, r in zip(l_list, r_list):
         li = i - r
