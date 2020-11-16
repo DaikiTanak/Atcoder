@@ -1,22 +1,19 @@
 def main():
     import sys
-    import numpy as np
-    from sys import stdin
-    readline = stdin.readline
+    readline = sys.stdin.readline
     N, W = map(int, readline().split())
 
-    amounts = dict()
+    amounts = [0] * (2 * (10**5) + 1)
 
     for i in range(N):
         si, ti, pi = map(int, input().split())
-        for t in range(si, ti):
-            try:
-                amounts[t] += pi
-            except KeyError:
-                amounts[t] = pi
+        amounts[si] += pi
+        amounts[ti] -= pi
 
-    for a in amounts.values():
-        if a > W:
+    cusum = 0
+    for a in amounts:
+        cusum += a
+        if cusum > W:
             print("No")
             sys.exit(0)
 

@@ -1,8 +1,5 @@
 import numpy as np
 
-# N = int(input())
-# S = input()
-# a_li = list(map(int, input().split()))
 N, K = map(int, input().split())
 costs = np.zeros((N, N))
 
@@ -10,16 +7,10 @@ for i in range(N):
     t_li = list(map(int, input().split()))
     costs[i] = np.asarray(t_li)
 
-# 探索候補スタック
-stack = [0]
-# 探索済リスト
-visited = []
 nodes = set([i for i in range(N)])
-
 
 def dfs(current_city_idx, visited, current_costs):
     ans = 0
-
 
     visited = visited + [current_city_idx]
     candidates = nodes - set(visited)
@@ -37,5 +28,4 @@ def dfs(current_city_idx, visited, current_costs):
                    current_costs + costs[current_city_idx][city_idx])
     return ans
 
-ans = dfs(0, [], 0)
-print(ans)
+print(dfs(0, [], 0))
