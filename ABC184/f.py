@@ -12,8 +12,6 @@ for x in A[20:]:
     for i in range(len(R)):
         R.append(x + R[i])
 R.sort()  # bisect使うため
-print(L)
-print(R)
 
 ans = 0
 for x in L:
